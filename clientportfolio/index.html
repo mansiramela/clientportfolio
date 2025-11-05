@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>CODECRAFTER TECHNOLOGIESS</title>
+ <link rel="icon" type="image/svg+xml" href="Assets/img/logoo.png" />
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ✅ Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- ✅ Custom CSS -->
+<link rel="stylesheet" href="Assets/css/style.css">
+
+<!-- Mobile Specific meta tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- ✅ Header -->
+<header class="main-header" id="mainHeader">
+  <div class="logo">
+    <img src="Assets/img/logoo.png" alt="Logo" />
+  </div>
+
+  <!-- Navbar  -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu button -->
+  <button class="menu-toggle" id="openSidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+</header>
+
+
+<!-- ✅ Sidebar (for mobile) -->
+<aside class="sidebar" id="customSidebar">
+  <button class="close-btn" id="closeSidebar">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="sidebar-logo">
+    <img src="Assets/img/logoo.png" alt="Sidebar Logo" />
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="services.html"><i class="fas fa-cog"></i> Services</a>
+    <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fas fa-info-circle"></i> Author</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </div>
+</aside>
+
+<!-- ✅ Overlay -->
+<div class="overlay" id="sidebarOverlay"></div>
+
+
+
+<!-- ✅ Hero Section -->
+<section class="hero d-flex align-items-center justify-content-center text-center text-lg-start">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Left Content -->
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <h1 class="display-5 fw-bold">
+          Hi, I’m <span class="text-warning">Ashish Dabhi</span>, <br />
+          a <span class="skill-text" id="typing-text"></span><span class="animate-blink">|</span>
+        </h1>
+        <p class="lead text-light mt-4">
+          I use animation as a third dimension to simplify experiences and guide
+          users through every interaction. I’m not just adding motion for style —
+          I design it in ways that matter.
+        </p>
+
+        <div class="d-flex flex-column flex-sm-row gap-3 mt-4 justify-content-center justify-content-lg-start">
+          <button class="btn download-btn px-4 py-2 fw-semibold shadow" onclick="downloadCV()">📄 Download CV</button>
+          <button class="btn contact-btn px-4 py-2 fw-semibold shadow">☎️ Contact Me</button>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="col-lg-6 d-flex justify-content-center">
+        <img src="Assets/img/Red and White Modern E-Commerce Website LinkedIn Post.png" alt="Client Image" class="hero-img" width="500" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- feature -->
+     <!-- Services Section -->
+  <section class="py-5 bg-light text-center">
+    <div class="container">
+      
+      <!-- Heading -->
+      <p class="text-uppercase text-danger fw-semibold">Features</p>
+      <h2 class="display-5 fw-bold text-dark mb-5">What I Do</h2>
+
+      <!-- Services Grid -->
+      <div class="row g-4 justify-content-center">
+
+        <!-- Service Item -->
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+            <h5 class="fw-semibold">WordPress</h5>
+            <p class="text-muted">I provide professional services in WordPress, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fab fa-shopify"></i></div>
+            <h5 class="fw-semibold">Shopify</h5>
+            <p class="text-muted">I provide professional services in Shopify, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h5 class="fw-semibold">UI/UX Design</h5>
+            <p class="text-muted">I provide professional services in UI/UX Design, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fab fa-laravel"></i></div>
+            <h5 class="fw-semibold">Laravel</h5>
+            <p class="text-muted">I provide professional services in Laravel, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fab fa-figma"></i></div>
+            <h5 class="fw-semibold">Figma</h5>
+            <p class="text-muted">I provide professional services in Figma, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm service-card text-start h-100">
+            <div class="service-icon"><i class="fas fa-desktop"></i></div>
+            <h5 class="fw-semibold">Web Design</h5>
+            <p class="text-muted">I provide professional services in Web Design, ensuring quality solutions tailored to your business.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View More Button -->
+      <div class="mt-5">
+        <a href="services.html" class="btn view-more-btn px-5 py-2 rounded-3 shadow">View More →</a>
+      </div>
+    </div>
+  </section>
+ 
+
+    <!-- about -->
+<section class="py-5 px-3 px-md-4 px-lg-5 home-about-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Text Content -->
+      <div class="col-md-6">
+        <h2 class="home-about-heading display-6 mb-3">
+          About <span>Us</span>
+        </h2>
+        <p class="home-about-text mb-4">
+          We are a creative team of developers and designers who are passionate
+          about building modern, responsive, and user-friendly web applications.
+          Our goal is to help businesses grow by creating digital solutions that
+          truly make an impact.
+        </p>
+        <p class="home-about-text mb-4">
+          With expertise in React, Tailwind CSS, and cutting-edge technologies,
+          we deliver scalable solutions with a focus on performance and design.
+        </p>
+
+        <!-- Buttons -->
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn btn-blue px-4 py-2 rounded-pill">
+            ☎️ Contact Us
+          </a>
+          <a href="about.html" class="btn btn-outline-blue px-4 py-2 rounded-pill active-blue">
+            📘 Learn More...
+          </a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="col-md-6 text-center">
+        <img src="Assets/img/mann.png" alt="About us" class="about-img img-fluid" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- portfolio -->
+
+<section class="py-5">
+  <div class="container">
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-5 text-dark">
+        My <span class="text-primary">Portfolio</span>
+      </h2>
+      <p class="text-muted">We offer a range of services to help your business grow.</p>
+    </div>
+
+    <!-- 4 Cards Grid -->
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow rounded-4 portfolio-card">
+          <img src="Assets/img/web1.webp" class="card-img-top rounded-top" alt="WordPress" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">WordPress</h5>
+            <p class="card-text text-muted small">
+              Build powerful, customizable websites with WordPress CMS.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm rounded-pill">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow rounded-4 portfolio-card">
+          <img src="Assets/img/web2.webp" class="card-img-top rounded-top" alt="Shopify" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Shopify</h5>
+            <p class="card-text text-muted small">
+              Create scalable ecommerce stores with Shopify.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm rounded-pill">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow rounded-4 portfolio-card">
+          <img src="Assets/img/web3.webp" class="card-img-top rounded-top" alt="UI/UX Design" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">UI/UX Design</h5>
+            <p class="card-text text-muted small">
+              Design user-friendly interfaces with a focus on experience.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm rounded-pill">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card border-0 shadow rounded-4 portfolio-card">
+          <img src="Assets/img/web4.webp" class="card-img-top rounded-top" alt="Laravel" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">Laravel</h5>
+            <p class="card-text text-muted small">
+              Develop secure and efficient web apps using Laravel framework.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm rounded-pill">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explore More Button -->
+    <div class="text-center mt-5">
+      <a href="portfolio.html" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold">
+        Explore More
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ✅ Pricing Section -->
+<section class="py-5 bg-light" id="pricing">
+  <div class="container">
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-5 text-dark">
+        Our <span class="text-primary">Pricing Plans</span>
+      </h2>
+      <p class="text-muted">Choose a plan that suits your business needs.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- 🔴 Basic Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card bg-white rounded-4 shadow-sm p-4 text-center h-100">
+          <h5 class="fw-bold text-danger mb-3">Basic</h5>
+          <h2 class="fw-bold mb-4">$49 <span class="fs-6 text-muted">/ month</span></h2>
+          <ul class="list-unstyled text-muted mb-4">
+            <li>✔️ 1 Website Design</li>
+            <li>✔️ 5 Pages</li>
+            <li>✔️ Basic Support</li>
+            <li>❌ SEO Optimization</li>
+          </ul>
+          <a href="#" class="btn btn-danger px-4 py-2 rounded-pill">Get Started</a>
+        </div>
+      </div>
+
+      <!-- 🔵 Standard Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card bg-white rounded-4 shadow p-4 text-center h-100 border border-primary">
+          <h5 class="fw-bold text-primary mb-3">Standard</h5>
+          <h2 class="fw-bold mb-4">$99 <span class="fs-6 text-muted">/ month</span></h2>
+          <ul class="list-unstyled text-muted mb-4">
+            <li>✔️ Up to 3 Websites</li>
+            <li>✔️ 10 Pages</li>
+            <li>✔️ Priority Support</li>
+            <li>✔️ SEO Optimization</li>
+          </ul>
+          <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Get Started</a>
+        </div>
+      </div>
+
+      <!-- 🟢 Premium Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card bg-white rounded-4 shadow-sm p-4 text-center h-100">
+          <h5 class="fw-bold text-success mb-3">Premium</h5>
+          <h2 class="fw-bold mb-4">$199 <span class="fs-6 text-muted">/ month</span></h2>
+          <ul class="list-unstyled text-muted mb-4">
+            <li>✔️ Unlimited Projects</li>
+            <li>✔️ Custom UI/UX Design</li>
+            <li>✔️ 24/7 Premium Support</li>
+            <li>✔️ SEO + Analytics</li>
+          </ul>
+          <a href="#" class="btn btn-success px-4 py-2 rounded-pill">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- resume -->
+<div class="container py-5 border-bottom" id="resume">
+  <!-- Subtitle -->
+  <div class="text-center text-danger mb-2">1+ YEARS OF EXPERIENCE</div>
+  <!-- Title -->
+  <h2 class="text-center fw-bold mb-5">My Resume</h2>
+
+  <!-- Tabs -->
+  <ul class="d-flex flex-column flex-md-row text-center bg-light shadow-sm rounded mb-4" id="resumeTabs">
+    <li class="flex-fill py-3 tab-btn active" data-target="profile">Profile</li>
+    <li class="flex-fill py-3 tab-btn" data-target="skills">Professional Skills</li>
+    <li class="flex-fill py-3 tab-btn" data-target="experience">Experience</li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div id="tabContents">
+    <!-- Profile -->
+    <div class="tab-pane active" id="profile" style="display:block;">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-5">
+          <img src="Assets/img/profile.jpg" 
+               alt="Profile" class="img-fluid rounded-4 shadow">
+        </div>
+
+        <div class="col-md-7">
+          <h3 class="fw-bold text-danger mb-3">Objective</h3>
+          <p class="text-muted mb-4">
+            I am a passionate and creative designer & developer with a strong focus on
+            delivering user-friendly and visually appealing interfaces. My goal is to
+            grow in a challenging environment where I can enhance my creativity and
+            technical skills while contributing to innovative digital projects.
+          </p>
+
+          <h3 class="fw-bold text-danger mb-3">Career Summary</h3>
+          <p class="text-muted mb-4">
+            With over 1 year of professional experience, I have developed strong
+            expertise in front-end technologies, responsive design, and visual
+            storytelling. I believe in crafting designs that not only look beautiful
+            but also perform seamlessly across devices.
+          </p>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="fw-semibold text-danger mb-2">Personal Details</h5>
+              <ul class="list-unstyled text-muted">
+                <li><strong>Name:</strong> Ashish Dabhi</li>
+                <li><strong>Role:</strong> Web Designer & Developer</li>
+                <li><strong>Experience:</strong> 1+ Years</li>
+                <li><strong>Location:</strong> Gujarat, India</li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <h5 class="fw-semibold text-danger mb-2">Languages</h5>
+              <ul class="list-unstyled text-muted">
+                <li>English — Fluent</li>
+                <li>Hindi — Fluent</li>
+                <li>Gujarati — Native</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="tab-pane" id="skills" style="display:none;">
+      <h3 class="fw-bold mb-4">Professional Skills</h3>
+      <div class="row g-4" id="skillsList"></div>
+    </div>
+
+    <!-- Experience -->
+    <div class="tab-pane" id="experience" style="display:none;">
+      <h3 class="fw-bold mb-4">Experience</h3>
+      <div class="d-flex flex-column gap-5">
+        <div class="timeline-item">
+          <div class="timeline-circle"></div>
+          <div class="timeline-card w-100 shadow-sm">
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+              <div>
+                <h5 class="fw-semibold mb-1">The Personal Portfolio Mystery</h5>
+                <small>Company XYZ (2018 - 2020)</small>
+              </div>
+              <div class="badge bg-white text-danger">4.30 / 5</div>
+            </div>
+            <p>Worked on interactive portfolio designs and modern UI projects.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-circle"></div>
+          <div class="timeline-card w-100 shadow-sm">
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+              <div>
+                <h5 class="fw-semibold mb-1">Diploma in Web Development</h5>
+                <small>Company ABC (2020 - 2022)</small>
+              </div>
+              <div class="badge bg-white text-danger">4.50 / 5</div>
+            </div>
+            <p>Developed scalable web apps and responsive layouts.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-circle"></div>
+          <div class="timeline-card w-100 shadow-sm">
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+              <div>
+                <h5 class="fw-semibold mb-1">Personal Portfolio April Fools</h5>
+                <small>Startup DEF (2022 - Present)</small>
+              </div>
+              <div class="badge bg-white text-danger">4.90 / 5</div>
+            </div>
+            <p>Created unique personal branding portfolios with animations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- contact -->
+
+<section id="contact" class="py-5">
+  <div class="container">
+    <!-- Section Heading -->
+    <div class="text-center mb-5">
+      <p class="text-uppercase fw-semibold text-danger">Contact</p>
+      <h2 class="fw-bold text-dark">Contact With Me</h2>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <!-- Left Card -->
+      <div class="col-md-6 d-flex">
+        <div class="p-4 bg-white contact-card w-100">
+          <img src="Assets/img/hand.webp" alt="contact" class="img-fluid contact-img mb-4">
+
+          <h3 class="fw-bold">Ashish Abhi</h3>
+          <p class="text-muted mb-1">Web Designer</p>
+          <p class="text-muted">Incase of any query, connect with me via mail and call.</p>
+
+          <p><strong>Phone:</strong> +91 99131 88705</p>
+          <p><strong>Email:</strong> ashishdabhi036@gmail.com</p>
+
+          <!-- Social Links -->
+          <div class="mt-4">
+            <p class="text-uppercase small text-muted mb-2">Find With Me</p>
+            <div class="social-links">
+              <a href="#" class="linkedin"><i class="fab fa-linkedin fa-lg"></i></a>
+              <a href="#" class="github"><i class="fab fa-github fa-lg"></i></a>
+              <a href="#" class="skype"><i class="fab fa-skype fa-lg"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Contact Form -->
+      <div class="col-md-6 d-flex ">
+        <div class="p-4 bg-white contact-card w-100">
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Phone Number" required>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="Subject" required>
+            </div>
+
+            <div class="mt-3">
+              <textarea rows="5" class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-custom w-100">SEND MESSAGE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- footer -->
+
+
+ <footer class="py-5 px-4">
+    <div class="container">
+      <div class="row gy-4">
+        
+        <!-- Logo & About -->
+        <div class="col-md-6 col-lg-3">
+          <img src="Assets/img/logoo.png" alt="Company Logo" class="mb-3" style="height:80px;">
+          <p class="small text-secondary">
+            We provide web, app, and digital solutions to help your business grow in the modern online world.
+          </p>
+        </div>
+        
+        <!-- Company -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Company</h2>
+          <ul class="list-unstyled small">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Services -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Services</h2>
+          <ul class="list-unstyled small">
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">App Development</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">SEO Optimization</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Contact Us</h2>
+          <p class="small text-secondary mb-1">📍 123 Street, New Delhi, India</p>
+          <p class="small text-secondary mb-1">📞 +91 98765 43210</p>
+          <p class="small text-secondary mb-3">✉️ info@mail.com</p>
+          
+          <div class="d-flex gap-3">
+            <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom text-center mt-5 pt-4">
+        <p class="small text-secondary mb-0">
+          © <span id="year"></span> All Rights Reserved | Designed by 
+          <a href="https://tssgtech.com" target="_blank">TSSG-Tech</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Bootstrap JS (Needed for buttons etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ Sidebar and Scroll Logic -->
+   <script src="Assets/js/script.js"></script>
+  
+
+</body>
+</html>

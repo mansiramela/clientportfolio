@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>CODECRAFTER TECHNOLOGIES</title>
+ <link rel="icon" type="image/svg+xml" href="Assets/img/logoo.png" />
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ✅ Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- ✅ Custom CSS -->
+<link rel="stylesheet" href="Assets/css/style.css">
+
+<!-- Mobile Specific meta tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- ✅ Header -->
+<header class="main-header" id="mainHeader">
+  <div class="logo">
+    <img src="Assets/img/logoo.png" alt="Logo" />
+  </div>
+
+  <!-- Navbar  -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu button -->
+  <button class="menu-toggle" id="openSidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+</header>
+
+
+<!-- ✅ Sidebar (for mobile) -->
+<aside class="sidebar" id="customSidebar">
+  <button class="close-btn" id="closeSidebar">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="sidebar-logo">
+    <img src="Assets/img/logoo.png" alt="Sidebar Logo" />
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="services.html"><i class="fas fa-cog"></i> Services</a>
+    <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fas fa-info-circle"></i> Author</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </div>
+</aside>
+
+<!-- ✅ Overlay -->
+<div class="overlay" id="sidebarOverlay"></div>
+
+
+<!-- ✅ Portfolio Hero Section -->
+<section class="portfolio-hero d-flex align-items-center justify-content-center text-center animate-slideInDown">
+  <div class="overlay-dark"></div>
+  <div class="container position-relative">
+    <h1 class="fw-bold display-4 text-white mb-3">Portfolio</h1>
+    <nav class="breadcrumb-nav">
+      <a href="index.html">Home</a> /
+      <span>Portfolio</span>
+    </nav>
+  </div>
+</section>
+
+
+<!-- counter-section -->
+<section class="counter-section">
+  <div class="counter-item">
+    <div class="counter-number" data-target="15" data-suffix="+">0</div>
+    <p>Years Experience</p>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-number" data-target="26" data-suffix="K">0</div>
+    <p>Projects Success</p>
+  </div>
+
+  <div class="counter-item">
+    <div class="counter-number" data-target="98" data-suffix="%">0</div>
+    <p>Satisfied Rate</p>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select the counter section (parent) and all counter numbers (child)
+    const section = document.querySelector(".counter-section");
+    const counters = document.querySelectorAll(".counter-number");
+
+    // Adjust speed — smaller number = faster animation
+    const speed = 200;
+
+    // Function runs when the counter section becomes visible on screen
+    const startCounting = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Loop through all counters
+          counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target"); // final value
+            const suffix = counter.getAttribute("data-suffix") || ""; // e.g. "+", "%", "K"
+            const increment = target / speed; // how much to increase per frame
+
+            const updateCount = () => {
+              const current = +counter.innerText.replace(/\D/g, ""); // current number only
+              
+              if (current < target) {
+                counter.innerText = Math.ceil(current + increment) + suffix;
+                requestAnimationFrame(updateCount); // keep counting
+              } else {
+                // Final formatting
+                if (target >= 1000) {
+                  counter.innerText = Math.round(target / 1000) + "K";
+                } else {
+                  counter.innerText = target + suffix;
+                }
+              }
+            };
+
+            // Start counting animation
+            updateCount();
+          });
+
+          // Run only once — stop observing after animation
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    // Create Intersection Observer (starts animation when section visible)
+    const observer = new IntersectionObserver(startCounting, {
+      threshold: 0.4, // 40% visible triggers animation
+    });
+
+    // Start observing the section
+    if (section) observer.observe(section);
+  });
+</script>
+
+
+
+<!-- Portfolio section -->
+
+<section class="py-5 position-relative bg-light">
+  <div class="container">
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-5 text-dark">
+        My <span class="text-primary">Portfolio</span>
+      </h2>
+      <p class="text-muted">We offer a range of services to help your business grow.</p>
+    </div>
+
+    <!-- Grid -->
+    <div id="portfolioGrid" class="row g-4"></div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center align-items-center mt-4 gap-2">
+      <button id="prevBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&larr;</button>
+      <div id="paginationNumbers" class="d-flex gap-2"></div>
+      <button id="nextBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const services = [
+    { id: 1, img: "Assets/img/web1.webp", title: "WordPress", desc: "Build powerful, customizable websites with WordPress CMS.", link: "#" },
+    { id: 2, img: "Assets/img/web2.webp", title: "Shopify", desc: "Create scalable ecommerce stores with Shopify.", link: "#" },
+    { id: 3, img: "Assets/img/web3.webp", title: "UI/UX Design", desc: "Design user-friendly interfaces with a focus on experience.", link: "#" },
+    { id: 4, img: "Assets/img/web4.webp", title: "Laravel", desc: "Develop secure and efficient web apps using Laravel framework.", link: "#" },
+    { id: 5, img: "Assets/img/web5.webp", title: "Figma", desc: "Collaborative design tool to create and prototype modern designs.", link: "#" },
+    { id: 6, img: "Assets/img/web6.webp", title: "Web Design", desc: "Modern, responsive and aesthetic website designs.", link: "#" },
+    { id: 7, img: "Assets/img/web7.webp", title: "Mobile Design", desc: "Crafting intuitive mobile app interfaces for iOS & Android.", link: "#" },
+    { id: 8, img: "Assets/img/web8.webp", title: "Figma to HTML", desc: "Convert Figma designs into responsive, pixel-perfect HTML/CSS.", link: "#" },
+    { id: 9, img: "Assets/img/web8.webp", title: "WooCommerce", desc: "Custom ecommerce development with WooCommerce on WordPress.", link: "#" },
+    { id: 10, img: "Assets/img/web1.webp", title: "React Apps", desc: "Modern single-page applications with React.js.", link: "#" },
+    { id: 11, img: "Assets/img/web2.webp", title: "Node.js", desc: "Backend APIs and web apps using Node.js.", link: "#" },
+    { id: 12, img: "Assets/img/web3.webp", title: "Tailwind CSS", desc: "Responsive UI with Tailwind utility-first CSS.", link: "#" },
+    { id: 13, img: "Assets/img/h1.png", title: "WordPress", desc: "Build powerful, customizable websites with WordPress CMS.", link: "#" },
+    { id: 14, img: "Assets/img/h3.png", title: "Shopify", desc: "Create scalable ecommerce stores with Shopify.", link: "#" },
+    { id: 15, img: "Assets/img/h4.png", title: "UI/UX Design", desc: "Design user-friendly interfaces with a focus on experience.", link: "#" },
+    { id: 16, img: "Assets/img/h5.jpeg", title: "Laravel", desc: "Develop secure and efficient web apps using Laravel framework.", link: "#" },
+    { id: 17, img: "Assets/img/h6.jpeg", title: "Figma", desc: "Collaborative design tool to create and prototype modern designs.", link: "#" },
+    { id: 18, img: "Assets/img/h7.jpeg", title: "Web Design", desc: "Modern, responsive and aesthetic website designs.", link: "#" },
+    { id: 19, img: "Assets/img/h8.jpeg", title: "Mobile App Design", desc: "Craft intuitive mobile app experiences for Android & iOS.", link: "#" },
+    { id: 20, img: "Assets/img/h9.jpeg", title: "Figma to HTML", desc: "Convert Figma designs into responsive, pixel-perfect HTML/CSS.", link: "#" }
+  ];
+
+  const itemsPerPage = 9;
+  let currentPage = 1;
+  const totalPages = Math.ceil(services.length / itemsPerPage);
+
+  function renderServices() {
+    const grid = document.getElementById("portfolioGrid");
+    grid.innerHTML = "";
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const selectedServices = services.slice(startIndex, startIndex + itemsPerPage);
+
+    selectedServices.forEach(service => {
+      grid.innerHTML += `
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow rounded-4 h-100">
+            <img src="${service.img}" class="card-img-top rounded-top" alt="${service.title}">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-dark">${service.title}</h5>
+              <p class="card-text text-muted small">${service.desc}</p>
+              <a href="${service.link}" class="btn btn-primary btn-sm">Read More</a>
+            </div>
+          </div>
+        </div>`;
+    });
+
+    renderPagination();
+  }
+
+  function renderPagination() {
+    const paginationNumbers = document.getElementById("paginationNumbers");
+    paginationNumbers.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+      paginationNumbers.innerHTML += `
+        <button class="btn btn-sm ${i === currentPage ? 'btn-primary text-white' : 'btn-outline-secondary'} rounded-circle"
+                onclick="goToPage(${i})">${i}</button>`;
+    }
+
+    document.getElementById("prevBtn").disabled = currentPage === 1;
+    document.getElementById("nextBtn").disabled = currentPage === totalPages;
+  }
+
+  function goToPage(page) {
+    if (page >= 1 && page <= totalPages) {
+      currentPage = page;
+      renderServices();
+    }
+  }
+
+  document.getElementById("prevBtn").addEventListener("click", () => goToPage(currentPage - 1));
+  document.getElementById("nextBtn").addEventListener("click", () => goToPage(currentPage + 1));
+
+  renderServices();
+</script>
+
+
+<style>
+  /* Pagination Buttons */
+  /* #paginationNumbers .btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+  #prevBtn, #nextBtn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
+  /* Portfolio Card Styling */
+  .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .card img {
+    height: 220px;               
+    object-fit: cover;             
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    flex-grow: 1;
+    font-size: 0.9rem;
+  }
+
+  /* Pagination Buttons */
+  #paginationNumbers .btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  #prevBtn, #nextBtn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Add spacing between cards */
+  #portfolioGrid .col-md-6.col-lg-4 {
+    display: flex;
+  }
+
+
+
+</style>
+
+
+
+
+
+ <!-- contact -->
+
+<section id="contact" class="py-5">
+  <div class="container">
+    <!-- Section Heading -->
+    <div class="text-center mb-5">
+      <p class="text-uppercase fw-semibold text-danger">Contact</p>
+      <h2 class="fw-bold text-dark">Contact With Me</h2>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <!-- Left Card -->
+      <div class="col-md-6 d-flex">
+        <div class="p-4 bg-white contact-card w-100">
+          <img src="Assets/img/hand.webp" alt="contact" class="img-fluid contact-img mb-4">
+
+          <h3 class="fw-bold">Ashish Abhi</h3>
+          <p class="text-muted mb-1">Web Designer</p>
+          <p class="text-muted">Incase of any query, connect with me via mail and call.</p>
+
+          <p><strong>Phone:</strong> +91 99131 88705</p>
+          <p><strong>Email:</strong> ashishdabhi036@gmail.com</p>
+
+          <!-- Social Links -->
+          <div class="mt-4">
+            <p class="text-uppercase small text-muted mb-2">Find With Me</p>
+            <div class="social-links">
+              <a href="#" class="linkedin"><i class="fab fa-linkedin fa-lg"></i></a>
+              <a href="#" class="github"><i class="fab fa-github fa-lg"></i></a>
+              <a href="#" class="skype"><i class="fab fa-skype fa-lg"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Contact Form -->
+      <div class="col-md-6 d-flex ">
+        <div class="p-4 bg-white contact-card w-100">
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Phone Number" required>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+
+            <div class="mt-3">
+              <input type="text" class="form-control" placeholder="Subject" required>
+            </div>
+
+            <div class="mt-3">
+              <textarea rows="5" class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-custom w-100">SEND MESSAGE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    
+</script>
+
+
+<!-- footer -->
+
+
+ <footer class="py-5 px-4">
+    <div class="container">
+      <div class="row gy-4">
+        
+        <!-- Logo & About -->
+        <div class="col-md-6 col-lg-3">
+          <img src="Assets/img/logoo.png" alt="Company Logo" class="mb-3" style="height:80px;">
+          <p class="small text-secondary">
+            We provide web, app, and digital solutions to help your business grow in the modern online world.
+          </p>
+        </div>
+        
+        <!-- Company -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Company</h2>
+          <ul class="list-unstyled small">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Services -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Services</h2>
+          <ul class="list-unstyled small">
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">App Development</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">SEO Optimization</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h6 fw-semibold mb-3">Contact Us</h2>
+          <p class="small text-secondary mb-1">📍 123 Street, New Delhi, India</p>
+          <p class="small text-secondary mb-1">📞 +91 98765 43210</p>
+          <p class="small text-secondary mb-3">✉️ info@mail.com</p>
+          
+          <div class="d-flex gap-3">
+            <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom text-center mt-5 pt-4">
+        <p class="small text-secondary mb-0">
+          © <span id="year"></span> All Rights Reserved | Designed by 
+          <a href="https://tssgtech.com" target="_blank">TSSG-Tech</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Bootstrap JS (Needed for buttons etc.) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ Sidebar and Scroll Logic -->
+   <script src="Assets/js/script.js"></script>
+  
+</body>
+</html>

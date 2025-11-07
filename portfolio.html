@@ -165,196 +165,334 @@
 </script>
 
 
+    <!-- Portfolio Section -->
+    <section class="py-5 position-relative bg-light">
+      <div class="container">
 
-<!-- Portfolio section -->
+        <!-- Grid -->
+        <div id="portfolioGrid" class="row g-4"></div>
 
-<section class="py-5 position-relative bg-light">
-  <div class="container">
-    <!-- Heading -->
-    <div class="text-center mb-5">
-      <h2 class="fw-bold display-5 text-dark">
-        My <span class="text-primary">Portfolio</span>
-      </h2>
-      <p class="text-muted">We offer a range of services to help your business grow.</p>
-    </div>
+        <!--  Pagination -->
+        <div class="d-flex justify-content-center align-items-center mt-4 gap-2">
+          <button id="prevBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&larr;</button>
+          <div id="paginationNumbers" class="d-flex gap-2"></div>
+          <button id="nextBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&rarr;</button>
+        </div>
 
-    <!-- Grid -->
-    <div id="portfolioGrid" class="row g-4"></div>
+      </div>
+    </section>
 
-    <!-- Pagination -->
-    <div class="d-flex justify-content-center align-items-center mt-4 gap-2">
-      <button id="prevBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&larr;</button>
-      <div id="paginationNumbers" class="d-flex gap-2"></div>
-      <button id="nextBtn" class="btn btn-outline-secondary btn-sm rounded-circle">&rarr;</button>
-    </div>
-  </div>
-</section>
+    <!--  Modal -->
+    <div class="custom-modal" id="customModal">
+      <div class="modal-content-box">
+        <button class="back-btn" id="closeModal"><i class="bi bi-arrow-left"></i> Back</button>
 
-<script>
-  const services = [
-    { id: 1, img: "Assets/img/web1.webp", title: "WordPress", desc: "Build powerful, customizable websites with WordPress CMS.", link: "#" },
-    { id: 2, img: "Assets/img/web2.webp", title: "Shopify", desc: "Create scalable ecommerce stores with Shopify.", link: "#" },
-    { id: 3, img: "Assets/img/web3.webp", title: "UI/UX Design", desc: "Design user-friendly interfaces with a focus on experience.", link: "#" },
-    { id: 4, img: "Assets/img/web4.webp", title: "Laravel", desc: "Develop secure and efficient web apps using Laravel framework.", link: "#" },
-    { id: 5, img: "Assets/img/web5.webp", title: "Figma", desc: "Collaborative design tool to create and prototype modern designs.", link: "#" },
-    { id: 6, img: "Assets/img/web6.webp", title: "Web Design", desc: "Modern, responsive and aesthetic website designs.", link: "#" },
-    { id: 7, img: "Assets/img/web7.webp", title: "Mobile Design", desc: "Crafting intuitive mobile app interfaces for iOS & Android.", link: "#" },
-    { id: 8, img: "Assets/img/web8.webp", title: "Figma to HTML", desc: "Convert Figma designs into responsive, pixel-perfect HTML/CSS.", link: "#" },
-    { id: 9, img: "Assets/img/web8.webp", title: "WooCommerce", desc: "Custom ecommerce development with WooCommerce on WordPress.", link: "#" },
-    { id: 10, img: "Assets/img/web1.webp", title: "React Apps", desc: "Modern single-page applications with React.js.", link: "#" },
-    { id: 11, img: "Assets/img/web2.webp", title: "Node.js", desc: "Backend APIs and web apps using Node.js.", link: "#" },
-    { id: 12, img: "Assets/img/web3.webp", title: "Tailwind CSS", desc: "Responsive UI with Tailwind utility-first CSS.", link: "#" },
-    { id: 13, img: "Assets/img/h1.png", title: "WordPress", desc: "Build powerful, customizable websites with WordPress CMS.", link: "#" },
-    { id: 14, img: "Assets/img/h3.png", title: "Shopify", desc: "Create scalable ecommerce stores with Shopify.", link: "#" },
-    { id: 15, img: "Assets/img/h4.png", title: "UI/UX Design", desc: "Design user-friendly interfaces with a focus on experience.", link: "#" },
-    { id: 16, img: "Assets/img/h5.jpeg", title: "Laravel", desc: "Develop secure and efficient web apps using Laravel framework.", link: "#" },
-    { id: 17, img: "Assets/img/h6.jpeg", title: "Figma", desc: "Collaborative design tool to create and prototype modern designs.", link: "#" },
-    { id: 18, img: "Assets/img/h7.jpeg", title: "Web Design", desc: "Modern, responsive and aesthetic website designs.", link: "#" },
-    { id: 19, img: "Assets/img/h8.jpeg", title: "Mobile App Design", desc: "Craft intuitive mobile app experiences for Android & iOS.", link: "#" },
-    { id: 20, img: "Assets/img/h9.jpeg", title: "Figma to HTML", desc: "Convert Figma designs into responsive, pixel-perfect HTML/CSS.", link: "#" }
-  ];
-
-  const itemsPerPage = 9;
-  let currentPage = 1;
-  const totalPages = Math.ceil(services.length / itemsPerPage);
-
-  function renderServices() {
-    const grid = document.getElementById("portfolioGrid");
-    grid.innerHTML = "";
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const selectedServices = services.slice(startIndex, startIndex + itemsPerPage);
-
-    selectedServices.forEach(service => {
-      grid.innerHTML += `
-        <div class="col-md-6 col-lg-4">
-          <div class="card border-0 shadow rounded-4 h-100">
-            <img src="${service.img}" class="card-img-top rounded-top" alt="${service.title}">
-            <div class="card-body">
-              <h5 class="card-title fw-bold text-dark">${service.title}</h5>
-              <p class="card-text text-muted small">${service.desc}</p>
-              <a href="${service.link}" class="btn btn-primary btn-sm">Read More</a>
-            </div>
+        <div class="modal-scroll-content">
+          <img id="modalImage" src="" alt="Service Image" />
+          <div class="modal-text-content p-3 text-white">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription" class="mt-2"></p>
           </div>
-        </div>`;
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    const services = [
+      { id: 13, img: "Assets/img/h1.png", fullImg: "Assets/img/h1full.png", title: "WordPress", desc: "Build powerful, customizable websites with WordPress CMS. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe temporibus, impedit molestias fuga, dolorem incidunt exercitationem ratione cumque iusto, totam commodi atque nulla modi laboriosam quae vitae? Eveniet accusantium molestiae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, pariatur!" },
+      { id: 14, img: "Assets/img/h3.png", fullImg: "Assets/img/h3full.png", title: "Shopify", desc: "Create scalable ecommerce stores with Shopify. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quae, quasi dolor libero saepe eius molestiae nesciunt veniam fuga ea!" },
+      { id: 15, img: "Assets/img/h4.png", fullImg: "Assets/img/h4full.png", title: "UI/UX Design", desc: "Design user-friendly interfaces with a focus on experience. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo unde, cum blanditiis maiores sit doloribus." },
+      { id: 16, img: "Assets/img/h5.jpeg", fullImg: "Assets/img/h5full.jpeg", title: "Laravel", desc: "Develop secure and efficient web apps using Laravel framework." },
+      { id: 17, img: "Assets/img/h6.jpeg", fullImg: "Assets/img/h6full.jpeg", title: "Figma", desc: "Collaborative design tool to create and prototype modern designs." },
+      { id: 18, img: "Assets/img/h7.jpeg", fullImg: "Assets/img/h7full.jpeg", title: "Web Design", desc: "Modern, responsive and aesthetic website designs." },
+      { id: 19, img: "Assets/img/h8.jpeg", fullImg: "Assets/img/h8full.jpeg", title: "Mobile App Design", desc: "Craft intuitive mobile app experiences for Android & iOS." },
+      { id: 20, img: "Assets/img/h9.jpeg", fullImg: "Assets/img/h9full.jpeg", title: "Figma to HTML", desc: "Convert Figma designs into responsive, pixel-perfect HTML/CSS." }
+    ];
+
+    const itemsPerPage = 9;
+    let currentPage = 1;
+    const totalPages = Math.ceil(services.length / itemsPerPage);
+
+    function renderServices() {
+      const grid = document.getElementById("portfolioGrid");
+      grid.innerHTML = "";
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const selectedServices = services.slice(startIndex, startIndex + itemsPerPage);
+
+      selectedServices.forEach(service => {
+        grid.innerHTML += `
+          <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow rounded-4 h-100">
+              <img src="${service.img}" class="card-img-top rounded-top" alt="${service.title}">
+              <div class="card-body">
+                <h5 class="card-title fw-bold text-dark">${service.title}</h5>
+                <p class="card-text text-muted small">${service.desc.substring(0, 80)}...</p>
+                <button class="btn btn-primary btn-sm" onclick="openModal('${service.fullImg}', '${service.title}', \`${service.desc}\`)">Read More</button>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      const paginationNumbers = document.getElementById("paginationNumbers");
+      paginationNumbers.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        paginationNumbers.innerHTML += `
+          <button class="btn btn-sm ${i === currentPage ? 'btn-primary text-white' : 'btn-outline-secondary'} rounded-circle"
+                  onclick="goToPage(${i})">${i}</button>`;
+      }
+
+      document.getElementById("prevBtn").disabled = currentPage === 1;
+      document.getElementById("nextBtn").disabled = currentPage === totalPages;
+    }
+
+    function goToPage(page) {
+      if (page >= 1 && page <= totalPages) {
+        currentPage = page;
+        renderServices();
+      }
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => goToPage(currentPage - 1));
+    document.getElementById("nextBtn").addEventListener("click", () => goToPage(currentPage + 1));
+
+    /*  Modal Functions */
+    function openModal(imageSrc, title, desc) {
+      const modal = document.getElementById("customModal");
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalDescription").innerText = desc;
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      const modal = document.getElementById("customModal");
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
     });
 
-    renderPagination();
-  }
+    renderServices();
+    </script>
 
-  function renderPagination() {
-    const paginationNumbers = document.getElementById("paginationNumbers");
-    paginationNumbers.innerHTML = "";
+    <!-- Bootstrap Icons (for back arrow) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    for (let i = 1; i <= totalPages; i++) {
-      paginationNumbers.innerHTML += `
-        <button class="btn btn-sm ${i === currentPage ? 'btn-primary text-white' : 'btn-outline-secondary'} rounded-circle"
-                onclick="goToPage(${i})">${i}</button>`;
+    <style>
+    /* Portfolio Card */
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
 
-    document.getElementById("prevBtn").disabled = currentPage === 1;
-    document.getElementById("nextBtn").disabled = currentPage === totalPages;
-  }
-
-  function goToPage(page) {
-    if (page >= 1 && page <= totalPages) {
-      currentPage = page;
-      renderServices();
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-  }
 
-  document.getElementById("prevBtn").addEventListener("click", () => goToPage(currentPage - 1));
-  document.getElementById("nextBtn").addEventListener("click", () => goToPage(currentPage + 1));
+    .card img {
+      height: 220px;
+      object-fit: cover;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
 
-  renderServices();
-</script>
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      flex-grow: 1;
+      font-size: 0.9rem;
+    }
+
+    /* Pagination Buttons */
+    #paginationNumbers .btn {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    #prevBtn, #nextBtn {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* spacing between cards */
+    #portfolioGrid .col-md-6.col-lg-4 {
+      display: flex;
+    }
+
+    /*  Custom Modal */
+    .custom-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /*  Modal Scroll Area */
+    .modal-content-box {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      border-radius: 1rem;
+      background: rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-scroll-content {
+      overflow-y: auto;
+      height: 100%;
+      scroll-behavior: smooth;
+      padding-bottom: 40px;
+    }
+
+    .modal-scroll-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .modal-scroll-content::-webkit-scrollbar-thumb {
+      background: #0d6efd;
+      border-radius: 5px;
+    }
+
+    .modal-scroll-content img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    /*  Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 30px;
+      background: rgba(255,255,255,0.9);
+      color: #000;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 10000;
+    }
+
+    .back-btn:hover {
+      background: #0d6efd;
+      color: #fff;
+    }
+
+    /*  Text inside modal */
+    .modal-text-content {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .modal-text-content h3 {
+      color: #0d6efd;
+      font-weight: 600;
+    }
 
 
-<style>
-  /* Pagination Buttons */
-  /* #paginationNumbers .btn {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-  }
-  #prevBtn, #nextBtn {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
+   /*  Responsive Card Images */
+    .card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9; 
+      object-fit: cover;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      transition: transform 0.3s ease;
+    }
 
-  /* Portfolio Card Styling */
-  .card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: none;
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
+    .card:hover img {
+      transform: scale(1.05);
+    }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
+    /*  Small screen  */
+    @media (max-width: 768px) {
+      .card img {
+        aspect-ratio: 16 / 9; 
+      }
+    }
 
-  .card img {
-    height: 220px;               
-    object-fit: cover;             
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
+    /* Mobile adjustments */
+    @media (max-width: 576px) {
+      .card img {
+        aspect-ratio: 16 / 9;
+      }
 
-  .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  
+      #portfolioGrid .col-md-6.col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 20px;   
+        padding-right: 20px;
+      }
 
-  .card-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
+      .card {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 1rem;
+      }
 
-  .card-text {
-    flex-grow: 1;
-    font-size: 0.9rem;
-  }
+      
+      .card .card-body {
+        padding: 15px 18px;
+      }
 
-  /* Pagination Buttons */
-  #paginationNumbers .btn {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-  }
+      .card h5 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
 
-  #prevBtn, #nextBtn {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+      .card p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
 
-  /* Add spacing between cards */
-  #portfolioGrid .col-md-6.col-lg-4 {
-    display: flex;
-  }
-
-
-
-</style>
+      .card .btn {
+        padding: 7px 15px;
+        font-size: 0.9rem;
+      }
+    }
+    </style>
 
 
 
@@ -477,8 +615,8 @@
         <div class="col-md-6 col-lg-3">
           <h2 class="h6 fw-semibold mb-3">Contact Us</h2>
           <p class="small text-secondary mb-1">📍 123 Street, New Delhi, India</p>
-          <p class="small text-secondary mb-1">📞 +91 98765 43210</p>
-          <p class="small text-secondary mb-3">✉️ info@mail.com</p>
+         <p class="small text-secondary mb-1">📞 : +91 9913188705</p>
+          <p class="small text-secondary mb-3">✉️ codecraftertech04@gmail.com</p>
           
           <div class="d-flex gap-3">
             <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
@@ -499,6 +637,20 @@
       </div>
     </div>
   </footer>
+
+  <!--  Contact Buttons -->
+<div class="fixed-contact">
+  <div class="contact-item">
+    <a href="tel:+919876543210" class="call-btn" title="Call Now">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <span class="popup-number">+91 9876543210</span>
+  </div>
+
+  <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
 
   <!-- ✅ Bootstrap JS (Needed for buttons etc.) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

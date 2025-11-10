@@ -17,7 +17,82 @@
 
   <!-- Devicon CDN for tool icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+ <style>
+  .tools-section {
+  text-align: center;
+  padding: 50px 20px;
+}
 
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tab {
+  background: #f3f3f3;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+}
+
+.tab i {
+  margin-right: 8px;
+}
+
+.tab-content {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tab-content.active {
+  display: flex;
+}
+
+.tool-box {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 15px 25px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
+}
+
+.tool-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Make tabs responsive */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tab {
+    width: 80%;
+    text-align: center;
+  }
+  .tool-box {
+    width: 80%;
+  }
+}
+
+ </style>
 </head>
 <body>
 
@@ -427,20 +502,25 @@
     
     // Tools-Section
     document.addEventListener("DOMContentLoaded", function () {
-  const tabs = document.querySelectorAll(".tab");
-  const contents = document.querySelectorAll(".tab-content");
+ // Tabs functionality
+const tabBtns = document.querySelectorAll(".tab");
+const tabPanes = document.querySelectorAll(".tab-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      // Remove active class from all tabs and contents
-      tabs.forEach(t => t.classList.remove("active"));
-      contents.forEach(c => c.classList.remove("active"));
+tabBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Remove active from all tabs
+    tabBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
 
-      // Add active to clicked tab and corresponding content
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.tab).classList.add("active");
+    // Show the matching tab content
+    const target = btn.getAttribute("data-tab");
+    tabPanes.forEach(pane => {
+      pane.classList.remove("active");
+      if (pane.id === target) pane.classList.add("active");
     });
   });
+});
+
 });
   </script>
 </body>

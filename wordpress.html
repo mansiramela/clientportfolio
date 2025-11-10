@@ -1,527 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WordPress Development - CODECRAFTER TECHNOLOGIES</title>
-  <link rel="icon" type="image/svg+xml" href="Assets/img/logoo.png" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordPress Development - CODECRAFTER TECHNOLOGIES</title>
+    <link rel="icon" type="image/svg+xml" href="Assets/img/logoo.png" />
 
-  <!-- ✅ Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ✅ Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- ✅ Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- ✅ Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-  <!-- ✅ Custom CSS -->
-  <link rel="stylesheet" href="Assets/css/style.css">
+    <!-- ✅ Custom CSS -->
+    <link rel="stylesheet" href="Assets/css/style.css" />
 
-  <!-- Devicon CDN for tool icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
- <style>
-  .tools-section {
-  text-align: center;
-  padding: 50px 20px;
-}
+    <!-- Devicon CDN for tool icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <style>
+      .tools-section {
+        text-align: center;
+        padding: 50px 20px;
+      }
 
-.tabs {
+      .tabs {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.tab {
-  background: #f3f3f3;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.tab.active {
-  background: #007bff;
-  color: white;
-}
-
-.tab i {
-  margin-right: 8px;
-}
-
-.tab-content {
-  display: none;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.tab-content.active {
-  display: flex;
-}
-
-.tool-box {
-  background: #f9f9f9;
-  border-radius: 12px;
-  padding: 15px 25px;
-  font-weight: 500;
-  display: flex;
   align-items: center;
+  flex-wrap: wrap; /* still wraps if too many */
   gap: 10px;
-  transition: 0.3s ease;
 }
 
-.tool-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+      .tab {
+        background: #f3f3f3;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
 
-/* Make tabs responsive */
-@media (max-width: 768px) {
+      .tab.active {
+        background: #007bff;
+        color: white;
+      }
+
+      .tab i {
+        margin-right: 8px;
+      }
+
+      .tab-content {
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .tab-content.active {
+        display: flex;
+      }
+
+      .tool-box {
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 15px 25px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s ease;
+      }
+
+      .tool-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Make tabs responsive */
+      /* @media (max-width: 768px) {
+        .tabs {
+          flex-direction: column;
+          align-items: center;
+        }
+        .tab {
+          width: 80%;
+          text-align: center;
+        }
+        .tool-box {
+          width: 80%;
+        }
+      } */
+    @media (max-width: 768px) {
   .tabs {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row; /* keep row on small screens too */
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
   .tab {
-    width: 80%;
-    text-align: center;
-  }
-  .tool-box {
-    width: 80%;
+    width: auto; /* don’t stretch to full width */
   }
 }
+    </style>
+  </head>
+  <body>
+    <!--  Header  -->
+    <header class="main-header" id="mainHeader">
+      <div class="logo">
+        <img src="Assets/img/logoo.png" alt="Logo" />
+      </div>
 
- </style>
-</head>
-<body>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
 
-  <!--  Header  -->
-  <header class="main-header" id="mainHeader">
-    <div class="logo">
-      <img src="Assets/img/logoo.png" alt="Logo" />
-    </div>
+      <button class="menu-toggle" id="openSidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
 
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <!--  Sidebar -->
+    <aside class="sidebar" id="customSidebar">
+      <button class="close-btn" id="closeSidebar">
+        <i class="fas fa-times"></i>
+      </button>
 
-    <button class="menu-toggle" id="openSidebar">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
+      <div class="sidebar-logo">
+        <img src="Assets/img/logoo.png" alt="Sidebar Logo" />
+      </div>
 
-  <!--  Sidebar -->
-  <aside class="sidebar" id="customSidebar">
-    <button class="close-btn" id="closeSidebar">
-      <i class="fas fa-times"></i>
-    </button>
+      <nav class="sidebar-nav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+        <a href="services.html"><i class="fas fa-cog"></i> Services</a>
+        <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="#"><i class="fas fa-info-circle"></i> Author</a>
+      </nav>
 
-    <div class="sidebar-logo">
-      <img src="Assets/img/logoo.png" alt="Sidebar Logo" />
-    </div>
+      <div class="sidebar-footer">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </aside>
 
-    <nav class="sidebar-nav">
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="about.html"><i class="fas fa-user"></i> About</a>
-      <a href="services.html"><i class="fas fa-cog"></i> Services</a>
-      <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
-      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-      <a href="#"><i class="fas fa-info-circle"></i> Author</a>
-    </nav>
+    <div class="overlay" id="sidebarOverlay"></div>
 
-    <div class="sidebar-footer">
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-  </aside>
-
-  <div class="overlay" id="sidebarOverlay"></div>
-
-<!-- ✅ WordPress Hero Section -->
-<section class="wordpress-hero d-flex align-items-center justify-content-center text-center animate-slideInDown">
-  <div class="overlay-dark"></div>
-  <div class="container position-relative">
-    <h1 class="fw-bold display-4 text-white mb-3">WordPress Development Company</h1>
-    <p class="text-light mb-3">Designing The Custom Website With Robust Plugins</p>
-    <nav class="breadcrumb-nav">
-      <a href="index.html">Home</a> /
-      <span>WordPress</span>
-    </nav>
-  </div>
-</section>
-
-
-  <!-- WordPress Description Section -->
-<section class="wordpress-about py-5">
-  <div class="container">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-10">
-        <h3 class="fw-semibold mb-4">
-          Our <span class="text-primary">WordPress development</span> is geared towards scalability and flexibility, 
-          allowing your website to grow and evolve with your business.
-        </h3>
-        <p class="text-muted fs-5">
-          Recognized for its flexibility and ease of use, WordPress is the ideal platform for everything 
-          from simple blogs to complex websites, and we harness its full potential to meet your specific needs. 
-          We provide custom theme design, plugin development, and comprehensive security measures to ensure 
-          your site is secure and tailored to your business requirements.
+    <!-- ✅ WordPress Hero Section -->
+    <section
+      class="wordpress-hero d-flex align-items-center justify-content-center text-center animate-slideInDown"
+    >
+      <div class="overlay-dark"></div>
+      <div class="container position-relative">
+        <h1 class="fw-bold display-4 text-white mb-3">
+          WordPress Development Company
+        </h1>
+        <p class="text-light mb-3">
+          Designing The Custom Website With Robust Plugins
         </p>
+        <nav class="breadcrumb-nav">
+          <a href="index.html">Home</a> /
+          <span>WordPress</span>
+        </nav>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-<!-- tools-section -->
-<section class="tools-section">
-  <h2>WE USE <br><span>TOOLS & TECHNOLOGIES</span></h2>
-
-  <div class="tabs">
-    <button class="tab active" data-tab="frontend">
-      <i class="devicon-react-original colored"></i> Frontend
-    </button>
-    <button class="tab" data-tab="backend">
-      <i class="devicon-nodejs-plain colored"></i> Backend
-    </button>
-    <button class="tab" data-tab="mobile">
-      <i class="devicon-android-plain colored"></i> Mobile
-    </button>
-    <button class="tab" data-tab="design">
-      <i class="devicon-figma-plain colored"></i> Design
-    </button>
-  </div>
-
-  <!-- ===== FRONTEND ===== -->
-  <div class="tab-content active" id="frontend">
-    <div class="tool-box"><i class="devicon-angularjs-plain colored"></i> Angular</div>
-    <div class="tool-box"><i class="devicon-react-original colored"></i> React.js</div>
-    <div class="tool-box"><i class="devicon-vuejs-plain colored"></i> Vue.js</div>
-    <div class="tool-box"><i class="devicon-tailwindcss-plain colored"></i> Tailwind</div>
-    <div class="tool-box"><i class="devicon-nextjs-original-wordmark"></i> Next.js</div>
-    <div class="tool-box"><i class="devicon-svelte-plain colored"></i> Svelte</div>
-    <div class="tool-box"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</div>
-    <div class="tool-box">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pwa.svg" alt="PWA" width="40" height="40" class="colored-icon">
-      PWA
-    </div>
-  </div>
-
-  <!-- BACKEND -->
-  <div class="tab-content" id="backend">
-    <div class="tool-box"><i class="devicon-laravel-plain colored"></i> Laravel</div>
-    <div class="tool-box"><i class="devicon-php-plain colored"></i> PHP</div>
-    <div class="tool-box"><i class="devicon-magento-original colored"></i> Magento</div>
-    <div class="tool-box"><i class="devicon-nodejs-plain colored"></i> Node.js</div>
-    <div class="tool-box"><i class="devicon-meteor-plain colored"></i> Meteor</div>
-    <div class="tool-box"><i class="devicon-dotnetcore-plain colored"></i> .Net</div>
-    <div class="tool-box"><i class="devicon-symfony-original colored"></i> Symfony</div>
-    <div class="tool-box"><i class="devicon-wordpress-plain colored"></i> WordPress</div>
-  </div>
-
-  <!-- MOBILE -->
-  <div class="tab-content" id="mobile">
-    <div class="tool-box"><i class="devicon-apple-original colored"></i> iOS</div>
-    <div class="tool-box"><i class="devicon-android-plain colored"></i> Android</div>
-    <div class="tool-box"><i class="devicon-react-original colored"></i> React Native</div>
-    <div class="tool-box"><i class="devicon-flutter-plain colored"></i> Flutter</div>
-  </div>
-
-  <!-- DESIGN -->
-  <div class="tab-content" id="design">
-    <div class="tool-box"><i class="devicon-figma-plain colored"></i> Figma</div>
-    <div class="tool-box"><i class="devicon-sketch-line colored"></i> Sketch</div>
-    <div class="tool-box"><i class="devicon-xd-line colored"></i> Adobe XD</div>
-  </div>
-</section>
-
-
-
-<!-- ✅ WordPress Services Section -->
-<section class="services-section py-5">
-  <div class="container">
-    <h2 class="fw-bold text-center mb-5">
-      Expert WordPress Development Services<br>
-      for Dynamic Online Solutions.
-    </h2>
-
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <ol class="service-list">
-          <li>Custom WordPress Website Development</li>
-          <li>Responsive WordPress Design</li>
-          <li>WordPress SEO Optimization</li>
-          <li>E-commerce Solutions</li>
-          <li>Security Hardening</li>
-          <li>Content Management Solutions</li>
-          <li>Ongoing Support and Enhancements</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Need more section -->
- <section class="more-services-section">
-  <div class="container">
-    
-    <div class="text-center mb-4">
-      <h5 class="section-subtitle">MORE <span>SERVICES</span></h5>
-    </div>
-
-    <!--  Description -->
-    <div class="text-center mb-5">
-      <h2 class="section-title">Need a Different Solution?</h2>
-      <p class="section-desc">
-        Whether your end-goal is to grow your  business or stand out amidst competition – 
-        we have an  expert for it all.
-      </p>
-    </div>
-
-    <!--Boxes -->
-    <div class="row text-center">
-      <div class="col-md-4 mb-4">
-        <div class="service-card">
-          <div class="icon"><i class="fas fa-search"></i></div>
-          <h5>SEO & Marketing</h5>
-          <p>Our strategic SEO and marketing solutions help you scale online success, ensuring your brand stands out for maximum impact.</p>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="service-card">
-          <div class="icon"><i class="fas fa-shopping-cart"></i></div>
-          <h5>eCommerce</h5>
-          <p>Transform your business with strategic eCommerce solutions, increasing online sales and efficiency.</p>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="service-card">
-          <div class="icon"><i class="fas fa-palette"></i></div>
-          <h5>UI / UX Design</h5>
-          <p>We create websites with a strong focus on user satisfaction, ensuring your visitors stay and convert.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Contact-Section -->
-<section id="contact" class="py-5">
-  <div class="container">
-    <!-- Section Heading -->
-    <div class="text-center mb-5">
-      <p class="text-uppercase fw-semibold text-danger">Contact</p>
-      <h2 class="fw-bold text-dark">Contact With Me</h2>
-    </div>
-
-    <div class="row g-4 align-items-stretch">
-      <!-- Left Card -->
-      <div class="col-md-6 d-flex">
-        <div class="p-4 bg-white contact-card w-100">
-          <img src="Assets/img/hand.webp" alt="contact" class="img-fluid contact-img mb-4">
-
-          <h3 class="fw-bold">Ashish Abhi</h3>
-          <p class="text-muted mb-1">Web Designer</p>
-          <p class="text-muted">Incase of any query, connect with me via mail and call.</p>
-
-          <p><strong>Phone:</strong> +91 99131 88705</p>
-          <p><strong>Email:</strong> ashishdabhi036@gmail.com</p>
-
-          <!-- Social Links -->
-          <div class="mt-4">
-            <p class="text-uppercase small text-muted mb-2">Find With Me</p>
-            <div class="social-links">
-              <a href="#" class="linkedin"><i class="fab fa-linkedin fa-lg"></i></a>
-              <a href="#" class="github"><i class="fab fa-github fa-lg"></i></a>
-              <a href="#" class="skype"><i class="fab fa-skype fa-lg"></i></a>
-            </div>
+    <!-- WordPress Description Section -->
+    <section class="wordpress-about py-5">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10">
+            <h3 class="fw-semibold mb-4">
+              Our <span class="text-primary">WordPress development</span> is
+              geared towards scalability and flexibility, allowing your website
+              to grow and evolve with your business.
+            </h3>
+            <p class="text-muted fs-5">
+              Recognized for its flexibility and ease of use, WordPress is the
+              ideal platform for everything from simple blogs to complex
+              websites, and we harness its full potential to meet your specific
+              needs. We provide custom theme design, plugin development, and
+              comprehensive security measures to ensure your site is secure and
+              tailored to your business requirements.
+            </p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right Contact Form -->
-      <div class="col-md-6 d-flex ">
-        <div class="p-4 bg-white contact-card w-100">
-          <form id="contactForm">
-            <div class="row g-3">
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Your Name" required>
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Phone Number" required>
-              </div>
-            </div>
+    <!-- tools-section -->
+    <section class="tools-section">
+      <h2>WE USE <br /><span>TOOLS & TECHNOLOGIES</span></h2>
 
-            <div class="mt-3">
-              <input type="email" class="form-control" placeholder="Your Email" required>
-            </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="frontend">
+          <i class="devicon-react-original colored"></i> Frontend
+        </button>
+        <button class="tab" data-tab="backend">
+          <i class="devicon-nodejs-plain colored"></i> Backend
+        </button>
+        <button class="tab" data-tab="mobile">
+          <i class="devicon-android-plain colored"></i> Mobile
+        </button>
+        <button class="tab" data-tab="design">
+          <i class="devicon-figma-plain colored"></i> Design
+        </button>
+      </div>
 
-            <div class="mt-3">
-              <input type="text" class="form-control" placeholder="Subject" required>
-            </div>
-
-            <div class="mt-3">
-              <textarea rows="5" class="form-control" placeholder="Your Message" required></textarea>
-            </div>
-
-            <div class="mt-4">
-              <button type="submit" class="btn btn-custom w-100">SEND MESSAGE</button>
-            </div>
-          </form>
+      <!-- ===== FRONTEND ===== -->
+      <div class="tab-content active" id="frontend">
+        <div class="tool-box">
+          <i class="devicon-angularjs-plain colored"></i> Angular
+        </div>
+        <div class="tool-box">
+          <i class="devicon-react-original colored"></i> React.js
+        </div>
+        <div class="tool-box">
+          <i class="devicon-vuejs-plain colored"></i> Vue.js
+        </div>
+        <div class="tool-box">
+          <i class="devicon-tailwindcss-plain colored"></i> Tailwind
+        </div>
+        <div class="tool-box">
+          <i class="devicon-nextjs-original-wordmark"></i> Next.js
+        </div>
+        <div class="tool-box">
+          <i class="devicon-svelte-plain colored"></i> Svelte
+        </div>
+        <div class="tool-box">
+          <i class="devicon-bootstrap-plain colored"></i> Bootstrap
+        </div>
+        <div class="tool-box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pwa.svg"
+            alt="PWA"
+            width="40"
+            height="40"
+            class="colored-icon"
+          />
+          PWA
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
+      <!-- BACKEND -->
+      <div class="tab-content" id="backend">
+        <div class="tool-box">
+          <i class="devicon-laravel-plain colored"></i> Laravel
+        </div>
+        <div class="tool-box">
+          <i class="devicon-php-plain colored"></i> PHP
+        </div>
+        <div class="tool-box">
+          <i class="devicon-magento-original colored"></i> Magento
+        </div>
+        <div class="tool-box">
+          <i class="devicon-nodejs-plain colored"></i> Node.js
+        </div>
+        <div class="tool-box">
+          <i class="devicon-meteor-plain colored"></i> Meteor
+        </div>
+        <div class="tool-box">
+          <i class="devicon-dotnetcore-plain colored"></i> .Net
+        </div>
+        <div class="tool-box">
+          <i class="devicon-symfony-original colored"></i> Symfony
+        </div>
+        <div class="tool-box">
+          <i class="devicon-wordpress-plain colored"></i> WordPress
+        </div>
+      </div>
 
+      <!-- MOBILE -->
+      <div class="tab-content" id="mobile">
+        <div class="tool-box">
+          <i class="devicon-apple-original colored"></i> iOS
+        </div>
+        <div class="tool-box">
+          <i class="devicon-android-plain colored"></i> Android
+        </div>
+        <div class="tool-box">
+          <i class="devicon-react-original colored"></i> React Native
+        </div>
+        <div class="tool-box">
+          <i class="devicon-flutter-plain colored"></i> Flutter
+        </div>
+      </div>
 
-<!-- footer -->
+      <!-- DESIGN -->
+      <div class="tab-content" id="design">
+        <div class="tool-box">
+          <i class="devicon-figma-plain colored"></i> Figma
+        </div>
+        <div class="tool-box">
+          <i class="devicon-sketch-line colored"></i> Sketch
+        </div>
+        <div class="tool-box">
+          <i class="devicon-xd-line colored"></i> Adobe XD
+        </div>
+      </div>
+    </section>
 
+    <!-- ✅ WordPress Services Section -->
+    <section class="services-section py-5">
+      <div class="container">
+        <h2 class="fw-bold text-center mb-5">
+          Expert WordPress Development Services<br />
+          for Dynamic Online Solutions.
+        </h2>
 
- <footer class="py-5 px-4">
-    <div class="container">
-      <div class="row gy-4">
-        
-        <!-- Logo & About -->
-        <div class="col-md-6 col-lg-3">
-          <img src="Assets/img/logoo.png" alt="Company Logo" class="mb-3" style="height:80px;">
-          <p class="small text-secondary">
-            We provide web, app, and digital solutions to help your business grow in the modern online world.
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <ol class="service-list">
+              <li>Custom WordPress Website Development</li>
+              <li>Responsive WordPress Design</li>
+              <li>WordPress SEO Optimization</li>
+              <li>E-commerce Solutions</li>
+              <li>Security Hardening</li>
+              <li>Content Management Solutions</li>
+              <li>Ongoing Support and Enhancements</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Need more section -->
+    <section class="more-services-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h5 class="section-subtitle">MORE <span>SERVICES</span></h5>
+        </div>
+
+        <!--  Description -->
+        <div class="text-center mb-5">
+          <h2 class="section-title">Need a Different Solution?</h2>
+          <p class="section-desc">
+            Whether your end-goal is to grow your business or stand out amidst
+            competition – we have an expert for it all.
           </p>
         </div>
-        
-        <!-- Company -->
-        <div class="col-md-6 col-lg-3">
-          <h2 class="h6 fw-semibold mb-3">Company</h2>
-          <ul class="list-unstyled small">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        
-        <!-- Services -->
-        <div class="col-md-6 col-lg-3">
-          <h2 class="h6 fw-semibold mb-3">Services</h2>
-          <ul class="list-unstyled small">
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">App Development</a></li>
-            <li><a href="#">UI/UX Design</a></li>
-            <li><a href="#">SEO Optimization</a></li>
-          </ul>
-        </div>
-        
-        <!-- Contact -->
-        <div class="col-md-6 col-lg-3">
-          <h2 class="h6 fw-semibold mb-3">Contact Us</h2>
-          <p class="small text-secondary mb-1">📍 123 Street, New Delhi, India</p>
-         <p class="small text-secondary mb-1">📞 : +91 9913188705</p>
-          <p class="small text-secondary mb-3">✉️ codecraftertech04@gmail.com</p>
-          
-          <div class="d-flex gap-3">
-            <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
-            <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
-            <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+
+        <!--Boxes -->
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <div class="service-card">
+              <div class="icon"><i class="fas fa-search"></i></div>
+              <h5>SEO & Marketing</h5>
+              <p>
+                Our strategic SEO and marketing solutions help you scale online
+                success, ensuring your brand stands out for maximum impact.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="service-card">
+              <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+              <h5>eCommerce</h5>
+              <p>
+                Transform your business with strategic eCommerce solutions,
+                increasing online sales and efficiency.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="service-card">
+              <div class="icon"><i class="fas fa-palette"></i></div>
+              <h5>UI / UX Design</h5>
+              <p>
+                We create websites with a strong focus on user satisfaction,
+                ensuring your visitors stay and convert.
+              </p>
+            </div>
           </div>
         </div>
-        
       </div>
-      
-      <!-- Bottom Bar -->
-      <div class="footer-bottom text-center mt-5 pt-4">
-        <p class="small text-secondary mb-0">
-          © <span id="year"></span> All Rights Reserved | Designed by 
-          <a href="https://tssgtech.com" target="_blank">TSSG-Tech</a>
-        </p>
+    </section>
+
+    <!-- Contact-Section -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <!-- Section Heading -->
+        <div class="text-center mb-5">
+          <p class="text-uppercase fw-semibold text-danger">Contact</p>
+          <h2 class="fw-bold text-dark">Contact With Me</h2>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <!-- Left Card -->
+          <div class="col-md-6 d-flex">
+            <div class="p-4 bg-white contact-card w-100">
+              <img
+                src="Assets/img/hand.webp"
+                alt="contact"
+                class="img-fluid contact-img mb-4"
+              />
+
+              <h3 class="fw-bold">Ashish Abhi</h3>
+              <p class="text-muted mb-1">Web Designer</p>
+              <p class="text-muted">
+                Incase of any query, connect with me via mail and call.
+              </p>
+
+              <p><strong>Phone:</strong> +91 99131 88705</p>
+              <p><strong>Email:</strong> ashishdabhi036@gmail.com</p>
+
+              <!-- Social Links -->
+              <div class="mt-4">
+                <p class="text-uppercase small text-muted mb-2">Find With Me</p>
+                <div class="social-links">
+                  <a href="#" class="linkedin"
+                    ><i class="fab fa-linkedin fa-lg"></i
+                  ></a>
+                  <a href="#" class="github"
+                    ><i class="fab fa-github fa-lg"></i
+                  ></a>
+                  <a href="#" class="skype"
+                    ><i class="fab fa-skype fa-lg"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Contact Form -->
+          <div class="col-md-6 d-flex">
+            <div class="p-4 bg-white contact-card w-100">
+              <form id="contactForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+
+                <div class="mt-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Subject"
+                    required
+                  />
+                </div>
+
+                <div class="mt-3">
+                  <textarea
+                    rows="5"
+                    class="form-control"
+                    placeholder="Your Message"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-custom w-100">
+                    SEND MESSAGE
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- footer -->
+
+    <footer class="py-5 px-4">
+      <div class="container">
+        <div class="row gy-4">
+          <!-- Logo & About -->
+          <div class="col-md-6 col-lg-3">
+            <img
+              src="Assets/img/logoo.png"
+              alt="Company Logo"
+              class="mb-3"
+              style="height: 80px"
+            />
+            <p class="small text-secondary">
+              We provide web, app, and digital solutions to help your business
+              grow in the modern online world.
+            </p>
+          </div>
+
+          <!-- Company -->
+          <div class="col-md-6 col-lg-3">
+            <h2 class="h6 fw-semibold mb-3">Company</h2>
+            <ul class="list-unstyled small">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="col-md-6 col-lg-3">
+            <h2 class="h6 fw-semibold mb-3">Services</h2>
+            <ul class="list-unstyled small">
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">App Development</a></li>
+              <li><a href="#">UI/UX Design</a></li>
+              <li><a href="#">SEO Optimization</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-6 col-lg-3">
+            <h2 class="h6 fw-semibold mb-3">Contact Us</h2>
+            <p class="small text-secondary mb-1">
+              📍 123 Street, New Delhi, India
+            </p>
+            <p class="small text-secondary mb-1">📞 : +91 9913188705</p>
+            <p class="small text-secondary mb-3">
+              ✉️ codecraftertech04@gmail.com
+            </p>
+
+            <div class="d-flex gap-3">
+              <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+              <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+              <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom text-center mt-5 pt-4">
+          <p class="small text-secondary mb-0">
+            © <span id="year"></span> All Rights Reserved | Designed by
+            <a href="https://tssgtech.com" target="_blank">TSSG-Tech</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!--  Contact Buttons -->
+    <div class="fixed-contact">
+      <div class="contact-item">
+        <a href="tel:+919876543210" class="call-btn" title="Call Now">
+          <i class="fas fa-phone-alt"></i>
+        </a>
+        <span class="popup-number">+91 9876543210</span>
+      </div>
+
+      <a
+        href="https://wa.me/919876543210"
+        target="_blank"
+        class="whatsapp-btn"
+        title="Chat on WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
     </div>
-  </footer>
 
+    <!-- ✅ Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!--  Contact Buttons -->
-<div class="fixed-contact">
-  <div class="contact-item">
-    <a href="tel:+919876543210" class="call-btn" title="Call Now">
-      <i class="fas fa-phone-alt"></i>
-    </a>
-    <span class="popup-number">+91 9876543210</span>
-  </div>
+    <!-- ✅ Sidebar JS -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openBtn = document.getElementById("openSidebar");
+        const closeBtn = document.getElementById("closeSidebar");
+        const sidebar = document.getElementById("customSidebar");
+        const overlay = document.getElementById("sidebarOverlay");
 
-  <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-</div>
+        openBtn.addEventListener("click", () => {
+          sidebar.classList.add("show");
+          overlay.classList.add("show");
+        });
 
+        closeBtn.addEventListener("click", () => {
+          sidebar.classList.remove("show");
+          overlay.classList.remove("show");
+        });
 
-
-
-  <!-- ✅ Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- ✅ Sidebar JS -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const openBtn = document.getElementById("openSidebar");
-      const closeBtn = document.getElementById("closeSidebar");
-      const sidebar = document.getElementById("customSidebar");
-      const overlay = document.getElementById("sidebarOverlay");
-
-      openBtn.addEventListener("click", () => {
-        sidebar.classList.add("show");
-        overlay.classList.add("show");
+        overlay.addEventListener("click", () => {
+          sidebar.classList.remove("show");
+          overlay.classList.remove("show");
+        });
       });
 
-      closeBtn.addEventListener("click", () => {
-        sidebar.classList.remove("show");
-        overlay.classList.remove("show");
+      // Tools-Section
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tabs functionality
+        const tabBtns = document.querySelectorAll(".tab");
+        const tabPanes = document.querySelectorAll(".tab-content");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active from all tabs
+            tabBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            // Show the matching tab content
+            const target = btn.getAttribute("data-tab");
+            tabPanes.forEach((pane) => {
+              pane.classList.remove("active");
+              if (pane.id === target) pane.classList.add("active");
+            });
+          });
+        });
       });
-
-      overlay.addEventListener("click", () => {
-        sidebar.classList.remove("show");
-        overlay.classList.remove("show");
-      });
-    });
-
-    
-    // Tools-Section
-    document.addEventListener("DOMContentLoaded", function () {
- // Tabs functionality
-const tabBtns = document.querySelectorAll(".tab");
-const tabPanes = document.querySelectorAll(".tab-content");
-
-tabBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    // Remove active from all tabs
-    tabBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    // Show the matching tab content
-    const target = btn.getAttribute("data-tab");
-    tabPanes.forEach(pane => {
-      pane.classList.remove("active");
-      if (pane.id === target) pane.classList.add("active");
-    });
-  });
-});
-
-});
-  </script>
-</body>
+    </script>
+  </body>
 </html>
